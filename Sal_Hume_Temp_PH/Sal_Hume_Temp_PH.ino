@@ -196,6 +196,19 @@ void PH(){
     Serial.println(pHValue, 2);
     printTime = millis();
   }
+  
+  if(pHValue <=8 && >=6){
+     Serial.println("Ph típico del agua:");
+
+  }
+  if(pHValue <=9 && >=8){
+     Serial.println("Ph típico de la sangre:");
+
+  }
+  if(pHValue <=6 && >=4){
+     Serial.println("Ph típico de un cafe:");
+
+  }
 
 }
 
