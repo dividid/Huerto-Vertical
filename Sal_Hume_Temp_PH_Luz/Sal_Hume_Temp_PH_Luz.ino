@@ -60,7 +60,7 @@ float temperatura(int channelValue){
   // la lectura digital
 
   float voltaje = (adc0 * 4.096/ 32767);
-  float temperatura = ((voltaje-0.786)/0.034)-2;
+  float temperatura = ((voltaje-0.786)/0.034)-4;
 
   //Devolvemos el valor de la temperatura
   return temperatura;
@@ -74,11 +74,6 @@ float humedad(int channelValue) {
 
   Serial.print(humidityValue,DEC);
 
-  if(sensorValue > 16050|| sensorValue <2100)
-  {
-    Serial.println("fora de rango-out of range-вне диапазона-ute av rekkevidde-خارج النطاق");
-  }
-  
   //Devolvemos el valor de la humedad
   return humidityValue;
 
@@ -228,11 +223,11 @@ void luz(){
   Serial.println(adc0);
 
   // Informa por pantalla del nivel de luz
-  if (adc0 < 500) {
+  if (adc0 < 45) {
     Serial.println("Oscuridad");
-  } else if (adc0 < 1000) {
+  } else if (adc0 < 65) {
     Serial.println("Sombra");
-  } else if (adc0 < 2500) {
+  } else if (adc0 < 85) {
     Serial.println("Luz ambiente");
   } else {
     Serial.println("Nivel alto de iluminación");
@@ -290,5 +285,7 @@ void loop() {
 
   //Llamada a la función del sensor de luz
   luz();
+
+  deepSleep(15000);
 
 }
